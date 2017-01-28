@@ -1,12 +1,12 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.views import View
-# Create your views here.
+from .models import ShortenedUrl
 
-def shortened_url_redirect_view(request, shortcode=None, *args, **kwargs):
-    return HttpResponse('Hello {shortcode}'.format(shortcode=shortcode))
+# Create your views here
 
 class ShortenedUrlRedirectView(View):
 
     def get(self, request, shortcode=None, *args, **kwargs):
-        return HttpResponse('Hello World {shortcode}'.format(shortcode=shortcode))
+        obj = get_object_or_404(ShortenedUrl, shortCode=shortcode)
+        return HttpResponseRedirect(obj.url)
