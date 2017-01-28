@@ -18,6 +18,4 @@ class ShortenedUrl(models.Model):
             self.shortCode = create_shortcode(self)
         super(ShortenedUrl, self).save(*args, **kwargs)
 
-
-
 # Create your models here.
