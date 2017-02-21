@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db import models
 
 from .utils import code_generated, create_shortcode
+from .validators import validate_url
 
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
 
@@ -25,7 +26,7 @@ class ShortenedUrlManager(models.Manager):
         return "New Codes made : {i}".format(i=new_codes)
 
 class ShortenedUrl(models.Model):
-    url = models.CharField(max_length=220)
+    url = models.CharField(max_length=220, validators= { validate_url })
     shortCode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
