@@ -11,6 +11,12 @@ class HomeView(View):
 
         })
 
+    def post(self, request, *args, **kwargs):
+        print(request.POST.get("url"))
+        return render(request, "shortener/home.html", {
+
+        })
+
 class ShortenedUrlRedirectView(View):
     def get(self, request, shortcode=None, *args, **kwargs):
         obj = get_object_or_404(ShortenedUrl, shortCode=shortcode)

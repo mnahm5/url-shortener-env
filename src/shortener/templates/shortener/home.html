@@ -5,6 +5,9 @@
     <title>Home</title>
 </head>
 <body>
-
+<form method="post" action="."> {% csrf_token %}
+    <input type="text" name="url" placeholder="Your url">
+    <input type="submit" value="Shorten">
+</form>
 </body>
 </html>
