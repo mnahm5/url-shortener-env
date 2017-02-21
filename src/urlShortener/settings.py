@@ -25,7 +25,7 @@ SECRET_KEY = '$pifdhe0&o*$%8v^d$5xz=5x@&g#!#^&dzz%cg26@$*-$44m+h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mdnadimahmed.app', 'www.mdnadimahmed.app']
 
 
 # Application definition
@@ -38,11 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #third party apps
+    'django_hosts',
+
     # custom apps
     'shortener',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,9 +54,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'urlShortener.urls'
+ROOT_HOSTCONF = 'urlShortener.hosts'
+DEFAULT_HOST = 'www'
+DEFAULT_REDIRECT_URL = "http://www.mdnadimahmed.app:8000"
 
 TEMPLATES = [
     {

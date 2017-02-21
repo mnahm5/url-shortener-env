@@ -20,6 +20,5 @@ from shortener.views import ShortenedUrlRedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'^fbv/(?P<shortcode>[\w-]+)/$', shortened_url_redirect_view),
-    url(r'^cbv/(?P<shortcode>[\w-]+)/$', ShortenedUrlRedirectView.as_view())
+    url(r'^(?P<shortcode>[\w-]+)/$', ShortenedUrlRedirectView.as_view())
 ]
