@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>{{ title }}</title>
 </head>
 <body>
 <form method="post" action="."> {% csrf_token %}
-    <input type="text" name="url" placeholder="Your url">
+    {{ form.as_p }}
     <input type="submit" value="Shorten">
 </form>
 </body>
